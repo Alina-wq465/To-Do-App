@@ -21,7 +21,11 @@ function App() {
     setTaskText(e.target.value);
   };
 
-  const handleTimeframeChange = (timeframe) => {
+  const handleTimeframeChange = (e) => {
+    setTaskTimeframe(e.target.value);
+  };
+
+  const selectTimeframe = (timeframe) => {
     setTaskTimeframe(timeframe);
     setShowAddInput(false);
   };
@@ -34,11 +38,7 @@ function App() {
   };
 
   const filterTasksByTimeframe = (timeframe) => {
-    if (timeframe === 'upcoming') {
-      return tasks.filter(task => task.timeframe === 'upcoming');
-    } else {
-      return tasks.filter(task => task.timeframe === timeframe);
-    }
+    return tasks.filter(task => task.timeframe === timeframe);
   };
 
   return (
@@ -52,11 +52,11 @@ function App() {
             <button onClick={toggleShowAddInput}>Add Task</button>
           </div>
           <div className="sidebar-body">
-            <button onClick={() => handleTimeframeChange("today")}>Today</button>
-            <button onClick={() => handleTimeframeChange("weekly")}>Weekly</button>
-            <button onClick={() => handleTimeframeChange("monthly")}>Monthly</button>
-            <button onClick={() => handleTimeframeChange("yearly")}>Yearly</button>
-            <button onClick={() => handleTimeframeChange("upcoming")}>Upcoming Events</button>
+            <button onClick={() => selectTimeframe("today")}>Today</button>
+            <button onClick={() => selectTimeframe("weekly")}>Weekly</button>
+            <button onClick={() => selectTimeframe("monthly")}>Monthly</button>
+            <button onClick={() => selectTimeframe("yearly")}>Yearly</button>
+            <button onClick={() => selectTimeframe("upcoming")}>Upcoming Events</button>
           </div>
         </div>
         <div className="main-content">
@@ -68,7 +68,7 @@ function App() {
                 onChange={handleInputChange}
                 placeholder="Add a new task"
               />
-              <select value={taskTimeframe} onChange={(e) => handleTimeframeChange(e.target.value)}>
+              <select value={taskTimeframe} onChange={handleTimeframeChange}>
                 <option value="today">Today</option>
                 <option value="weekly">Weekly</option>
                 <option value="monthly">Monthly</option>
