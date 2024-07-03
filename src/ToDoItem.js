@@ -13,21 +13,23 @@ function ToDoItem({ task, toggleTaskCompletion, deleteTask, editTask }) {
     setIsEditing(false);
   };
 
+  const handleDoubleClick = () => {
+    setIsEditing(true);
+  };
+
   return (
-    <li>
+    <li onDoubleClick={handleDoubleClick}>
       {isEditing ? (
-        <>
-          <input
-            type="text"
-            value={newText}
-            onChange={handleEditChange}
-            onBlur={handleEditSubmit}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') handleEditSubmit();
-            }}
-            autoFocus
-          />
-        </>
+        <input
+          type="text"
+          value={newText}
+          onChange={handleEditChange}
+          onBlur={handleEditSubmit}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') handleEditSubmit();
+          }}
+          autoFocus
+        />
       ) : (
         <>
           <span
@@ -38,7 +40,6 @@ function ToDoItem({ task, toggleTaskCompletion, deleteTask, editTask }) {
           >
             {task.text}
           </span>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
           <button onClick={deleteTask}>Delete</button>
         </>
       )}

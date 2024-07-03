@@ -1,85 +1,208 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-}
-
-.App {
-  text-align: center;
-  max-width: 500px;
-  margin: 50px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  color: #333;
-}
-
-.input-container {
+  background-color: #f0f2f5;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  height: 100vh;
+  margin: 0;
 }
 
-input[type="text"] {
-  width: 70%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 10px;
+/* Main container for your application */
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Adjust as needed */
+  height: 100; /* Adjust as needed */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-button {
-  padding: 10px 15px;
-  font-size: 16px;
-  color: #fff;
+/* Header styles */
+.header {
+  width: 100%;
+  height: 90px;
   background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 25px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Content area styles */
+.content {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+/* Sidebar styles */
+.sidebar {
+  margin-top: 20px;
+  width: 150px;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .sidebar-header {
+ 
+  width: 100%;
+  height: 100px;
+}
+
+.sidebar .sidebar-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+.sidebar button {
+ 
+  width: 100%;
+  height: 100px;
+  padding: 15px;
   border: none;
-  border-radius: 5px;
+  text-align: center;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-bottom: 1px solid #ddd;
+
+}
+
+.sidebar button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto; /* Enable scroll for main content */
+}
+
+/* Heading styles */
+h1, h2 {
+  color: #333;
+  height: fit-content;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+}
+
+/* Styling for input containers */
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-container input[type="text"] {
+  flex: 1;
+  width: 30%;
+  height: 10%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+
+.input-container select {
+  padding: 12px;
+  width: 30%;
+  height: 10%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #0056b3;
+.input-container input[type="text"]:focus,
+.input-container select:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
+.input-container button {
+  width: 20%;
+  height: 10%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-container button:hover {
+  background-color: #0056b3;
+
+}
+
+/* Styling for lists */
 ul {
   list-style-type: none;
   padding: 0;
+  margin-bottom: 12px;
 }
 
 li {
+  width: 620px;
+  height: fit-content;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  padding: 2px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: #f9f9f9;
 }
 
 li span {
   flex: 1;
+  width: fit-content;
+  height: fit-content;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
+  text-align: left;
 }
 
 li button {
+  width: 10%;
+  height: 20%;
   background-color: #dc3545;
   color: white;
   border: none;
-  padding: 5px 10px;
-  margin-left: 5px;
+  padding: 8px 12px;
+  margin-left: 10px; /* Added margin for spacing */
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
 }
 
 li button:hover {
@@ -88,8 +211,8 @@ li button:hover {
 
 li input[type="text"] {
   flex: 1;
-  padding: 5px;
-  font-size: 16px;
+  padding: 8px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
 }
